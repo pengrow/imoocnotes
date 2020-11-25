@@ -205,6 +205,12 @@ JVM
 
 
 
+函数式编程的演变史
+
+根据实际场景演示，
+
+
+
 ## 默认方法
 
 默认方法是什么
@@ -239,16 +245,27 @@ lambda是一个匿名函数，可以把lambda表达式理解为一段可以传�
 
 ### 表达式形式
 
-- 无参数，无返回值
+Lambda表达式的形式
+	1.(parameters) -> expression
+	2.(parameters) -> { statement;}
 
-- 无参数，有返回值
-
-- 有参数，无返回值
-
-- 有参数，有返回值
-
-  
-
+```
+形式一：没有参数
+	() -> System.out.println("Hello world!");
+形式二：只有一个参数
+	name -> System.out.println( "Hello World from" + name + " !");
+形式三：没有参数，逻辑复杂
+	() -> {
+			System.out.println(" Hello");
+			System.out.println("World");
+		}
+形式四：包含两个参数的方法
+	BinaryOperator<Long> functionAdd = (x, y) -> x + y;
+	Long result = functionAdd.apply(1L, 2L);
+形式五：对参数显示声明
+	BinaryOperator<Long> functionAdd = (Long x, Long y) -> x + y;
+	Long result = functionAdd.apply(1L, 2L);
+```
 
 
 ## 函数式接口
@@ -400,6 +417,8 @@ Optional类，可以减少被null检查的代码污染。
 根据实际场景，应对不断变化，代码多个版本演进
 
 
+
+需要编写类，条件多了就需要编写很多类。使用匿名类来优化
 
 
 

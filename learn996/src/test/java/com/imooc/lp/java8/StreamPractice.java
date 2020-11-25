@@ -7,6 +7,7 @@ import org.junit.Test;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
 public class StreamPractice {
@@ -88,9 +89,14 @@ public class StreamPractice {
     //    (6) 打印生活在剑桥的交易员的所有交易额。
     @Test
     public void test6() {
+
+        Consumer<Integer> consumer = x -> System.out.println(x);
+        MyClass myClass = new MyClass();
+
         transactions.stream().filter(t -> t.getTrader().getCity().equals("Cambridge"))
                 .map(t -> t.getValue())
-                .forEach(System.out::println);
+                .forEach(myClass::test);
+
     }
 
     //    (7) 所有交易中，最高的交易额是多少？
@@ -112,3 +118,11 @@ public class StreamPractice {
         System.out.println(JSON.toJSONString(transaction, true));
     }
 }
+
+class MyClass {
+    public void test(Integer t){
+        System.out.println(t+1);
+    }
+}
+
+
